@@ -1,0 +1,151 @@
+﻿<Window x:Class="AlturaAirDropper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
+        xmlns:local="clr-namespace:AlturaAirDropper"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="564" Width="904">
+    <Grid>
+        <Label Content="Automatic" HorizontalAlignment="Left" Height="34" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" FontSize="18"/>
+        <Label Content="Manual" HorizontalAlignment="Left" Height="34" Margin="653,10,0,0" VerticalAlignment="Top" Width="129" FontSize="18"/>
+        <ScrollViewer x:Name="LogScrollViewer" Margin="11,274,11,10">
+            <TextBox x:Name="LogBox"  Text="Log Box" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5">
+            </TextBox>
+        </ScrollViewer>
+        <TextBox x:Name="txt_holdCol" HorizontalAlignment="Left" Margin="30,69,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="220" ToolTip="This is the collection that will get the list of Holders to show in the Logbox, or use for Automated AirDrops" Height="20">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Collection Id 0x1234..." Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <TextBox x:Name="txt_HolderToken" Text="1" TextAlignment="Right" HorizontalAlignment="Left" Margin="183,136,0,0" VerticalAlignment="Top" Width="72" ToolTip="Used if you only want to check holders of a specific item within a collection" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox x:Name="txt_AirDropCollection" HorizontalAlignment="Left" Margin="310,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Collection Id 0x1234..." Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <TextBox x:Name="txt_numAirDropToken" HorizontalAlignment="Left" Margin="480,88,0,0" TextAlignment="Right" Text="1" ToolTip="Token from Above collection to Airdrop" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox x:Name="txt_APIKey" HorizontalAlignment="Left" Margin="310,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Api Key XXXXXXX-XXXX" Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Label Content="Holder Collection" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="Item Token" HorizontalAlignment="Left" Margin="140,111,0,0" VerticalAlignment="Top"/>
+        <Label Content="API Key" HorizontalAlignment="Left" Margin="290,63,0,0" VerticalAlignment="Top"/>
+        <Label Content="Air Drop Collection" HorizontalAlignment="Left" Margin="290,133,0,0" VerticalAlignment="Top"/>
+        <Label Content="Air Drop Token" HorizontalAlignment="Left" Margin="460,62,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_ManAirDropAddress" HorizontalAlignment="Left" Margin="685,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Manual Address to send a token too">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Address 0x1234..." Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Label Content="To Address" Margin="665,44,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
+        <CheckBox x:Name="chk_SpecificToken" Content="Specific Item" HorizontalAlignment="Left" Margin="17,137,0,0" VerticalAlignment="Top" Checked="chk_SpecificToken_Checked" Click="chk_SpecificToken_Checked"/>
+        <Button x:Name="btn_CheckHolders" Content="Check Holders" HorizontalAlignment="Left" Margin="60,184,0,0" VerticalAlignment="Top" Width="160" Click="Button_Click" Height="25"/>
+        <Label Content="Amount to Airdrop" HorizontalAlignment="Left" Margin="460,133,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_AmountToAirdrop" TextAlignment="Right" Text="1" HorizontalAlignment="Left" Margin="480,159,0,0" VerticalAlignment="Top" Width="120" ToolTip="Amount to AirDrop" PreviewTextInput="NumberValidationTextBox"/>
+        <Rectangle HorizontalAlignment="Left" Height="254" Margin="265,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="254" Margin="645,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Label Content="AirDrop Details" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="34" Margin="347,10,0,0" VerticalAlignment="Top" Width="175" FontSize="18"/>
+
+        <Button x:Name="btn_AutoAirdrop" Content="Automatic AirDrop" HorizontalAlignment="Left" Margin="61,229,0,0" VerticalAlignment="Top" Width="160" Height="25" Click="btn_AutoAirdrop_Click"/>
+        <Button x:Name="btn_ManAirdrop" Content="Manual AirDrop" HorizontalAlignment="Left" Margin="691,229,0,0" VerticalAlignment="Top" Width="160" Height="25" Click="btn_ManAirdrop_Click"/>
+        <Button x:Name="btn_Twitter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Margin="415,229,0,0" Height="25" ToolTip="The Shillverse Twitter" Click="Btn_Twitter1_Click">
+            <StackPanel>
+                <Image Source="/images/twitter-128.png" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="btn_Altura" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Margin="385,229,0,0" Height="25" ToolTip="Shill Punk Army of Altura" Click="Btn_Altura_Click">
+            <StackPanel>
+                <Image Source="/images/altura.png" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="btn_Github1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Margin="445,229,0,0" Height="25" ToolTip="Github" Click="Btn_Github1_Click">
+            <StackPanel>
+                <Image Source="/images/Github-120.png" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="btn_BSC" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Margin="475,229,0,0" Height="25" ToolTip="Donate BSC to The Shillverse (click to copy wallet Code to clipboard)" Click="Btn_BSC_Click">
+            <StackPanel>
+                <Image Source="/images/BSC.png" />
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>
