@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlturaAirDropper", "AlturaAirDropper\AlturaAirDropper.csproj", "{988ADE6C-23FB-4D63-9459-244A8D5F6B02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlturaImageChanger", "AlturaImageChanger\AlturaImageChanger.csproj", "{2253990B-E3DB-4CC7-AC1B-16C3D9D6285C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{988ADE6C-23FB-4D63-9459-244A8D5F6B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{988ADE6C-23FB-4D63-9459-244A8D5F6B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{988ADE6C-23FB-4D63-9459-244A8D5F6B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{988ADE6C-23FB-4D63-9459-244A8D5F6B02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2253990B-E3DB-4CC7-AC1B-16C3D9D6285C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2253990B-E3DB-4CC7-AC1B-16C3D9D6285C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2253990B-E3DB-4CC7-AC1B-16C3D9D6285C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2253990B-E3DB-4CC7-AC1B-16C3D9D6285C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B722D617-BE2A-4C1B-8F0E-A5A2D3EC78A0}
+		SolutionGuid = {2D453D98-F997-4CDB-84D7-A3C4FF977241}
 	EndGlobalSection
 EndGlobal

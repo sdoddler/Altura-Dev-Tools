@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Altura.png" />
+    <None Remove="BSC.png" />
+    <None Remove="Github-120.png" />
+    <None Remove="twitter-128.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Altura.png" />
+    <Resource Include="BSC.png" />
+    <Resource Include="Github-120.png" />
+    <Resource Include="twitter-128.png" />
+  </ItemGroup>
+
+</Project>

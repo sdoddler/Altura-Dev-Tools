@@ -35,6 +35,7 @@ namespace AlturaAirDropper
         public HttpClientHandler clientHandler = new HttpClientHandler();
 
         public HttpClient client = new HttpClient();
+
         public MainWindow()
         {
             proxy = WebRequest.DefaultWebProxy;

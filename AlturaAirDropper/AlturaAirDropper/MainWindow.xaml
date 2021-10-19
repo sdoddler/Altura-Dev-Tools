@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
         xmlns:local="clr-namespace:AlturaAirDropper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="564" Width="904">
+        Title="Altura Air Dropper" Height="564" Width="904">
     <Grid>
         <Label Content="Automatic" HorizontalAlignment="Left" Height="34" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" FontSize="18"/>
         <Label Content="Manual" HorizontalAlignment="Left" Height="34" Margin="653,10,0,0" VerticalAlignment="Top" Width="129" FontSize="18"/>
@@ -129,22 +129,22 @@
         <Button x:Name="btn_ManAirdrop" Content="Manual AirDrop" HorizontalAlignment="Left" Margin="691,229,0,0" VerticalAlignment="Top" Width="160" Height="25" Click="btn_ManAirdrop_Click"/>
         <Button x:Name="btn_Twitter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Margin="415,229,0,0" Height="25" ToolTip="The Shillverse Twitter" Click="Btn_Twitter1_Click">
             <StackPanel>
-                <Image Source="/images/twitter-128.png" />
+                <Image Source="/twitter-128.png" />
             </StackPanel>
         </Button>
         <Button x:Name="btn_Altura" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Margin="385,229,0,0" Height="25" ToolTip="Shill Punk Army of Altura" Click="Btn_Altura_Click">
             <StackPanel>
-                <Image Source="/images/altura.png" />
+                <Image Source="/Altura.png" />
             </StackPanel>
         </Button>
         <Button x:Name="btn_Github1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Margin="445,229,0,0" Height="25" ToolTip="Github" Click="Btn_Github1_Click">
             <StackPanel>
-                <Image Source="/images/Github-120.png" />
+                <Image Source="/Github-120.png" />
             </StackPanel>
         </Button>
         <Button x:Name="btn_BSC" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Margin="475,229,0,0" Height="25" ToolTip="Donate BSC to The Shillverse (click to copy wallet Code to clipboard)" Click="Btn_BSC_Click">
             <StackPanel>
-                <Image Source="/images/BSC.png" />
+                <Image Source="/BSC.png" />
             </StackPanel>
         </Button>
     </Grid>

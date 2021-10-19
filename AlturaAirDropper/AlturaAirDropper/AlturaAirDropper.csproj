@@ -7,24 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\Altura.png" />
-    <None Remove="images\BSC.png" />
-    <None Remove="images\Github-120.png" />
-    <None Remove="images\twitter-128.png" />
+    <Resource Include="Altura.png" />
+    <Resource Include="BSC.png" />
+    <Resource Include="Github-120.png" />
+    <Resource Include="twitter-128.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\BSC.png" />
-    <Resource Include="images\Github-120.png" />
-    <Resource Include="images\twitter-128.png" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1">
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="images\Altura.png" />
+    <Folder Include="images\" />
   </ItemGroup>
 
 </Project>
