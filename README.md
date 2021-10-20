@@ -56,6 +56,22 @@ This tool can be used to airdrop NFTs to individual users or holders of a specif
 Once you fill in the above fields as required, if you wish to do an automatic airdrop, hit the "Automatic Airdrop" button. This will check how many people you will send the NFT to, and confirm you wish to go ahead with a Yes/No messageBox. **On a failure the airdrop will cancel to avoid any unfortunate errors/issues.** To send an NFT to individual Addresses, use the Manual AirDrop Button, and the To Address field.
 
 
+## Example
+As an example to show how the Property Changer might be used, you can see below that I'm changing a property on a Shill Punk.
+
+- For this I use the Shill punk Collection: 0x27970a7fa322bbfefe208dbca7f8130a964c2b12
+- Specify the token I want: 93 (in this case  it refers to Shill Punk #92)
+- Set the Property Name to Luck as this is what I want to change
+- And the Property Value to Really Lucky
+
+When I click Change Property a message box shows up - and confirms I'm happy to make this change. 
+
+Upon clicking yes you can see the Log box shows "Updating Item: Shill Punk #92" and the Property "Luck" to the value "Really Lucky"
+
+The Property is then immediately updated on the Altura API and website as you can see below.
+
+![](https://i.imgur.com/AQGsrb8.png)
+
 
 #### Support the Creator
 If these tools were helpful to you please consider supporting me in one of the following ways
