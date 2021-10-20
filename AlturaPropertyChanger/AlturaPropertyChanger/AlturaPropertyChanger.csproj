@@ -4,14 +4,15 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <PackageIcon>icon.png</PackageIcon>
     <ApplicationIcon>icon.ico</ApplicationIcon>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Altura.png" />
     <None Remove="BSC.png" />
     <None Remove="Github-120.png" />
+    <None Remove="icon.png" />
     <None Remove="twitter-128.png" />
     <None Include="..\..\AlturaAirDropper\AlturaAirDropper\icon.png">
       <Pack>True</Pack>
@@ -27,6 +28,7 @@
     <Resource Include="Altura.png" />
     <Resource Include="BSC.png" />
     <Resource Include="Github-120.png" />
+    <Resource Include="icon.png" />
     <Resource Include="twitter-128.png" />
   </ItemGroup>
 

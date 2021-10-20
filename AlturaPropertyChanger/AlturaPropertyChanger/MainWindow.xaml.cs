@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace AlturaImageChanger
+namespace AlturaPropertyChanger
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -63,7 +63,7 @@ namespace AlturaImageChanger
         }
 
 
-        private async Task TriggerChangeItem()
+        private async Task TriggerChangeProperties()
         {
 
 
@@ -82,13 +82,13 @@ namespace AlturaImageChanger
             if (items != null)
             {
                 if (items.Count > 0) {
-                    var msg = $"You are about to change images on {items.Count} from {items[0].itemCollectionName}, are you sure you wish to do this?";
-                MessageBoxResult result = MessageBox.Show(msg, "Are you sure you wish to change these images?", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                    var msg = $"You are about to change properties on {items.Count} from {items[0].itemCollectionName}, are you sure you wish to do this?";
+                MessageBoxResult result = MessageBox.Show(msg, "Are you sure you wish to change these properties?", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
 
-                            await TaskChangeImages(items, txt_APIKey.Text, int.Parse(txt_imageIndex.Text), txt_holdCol.Text);
+                            await TaskChangeProperties(items, txt_APIKey.Text, txt_PropertyName.Text, txt_PropertValue.Text, txt_holdCol.Text);
                             ButtonSetState(true);
                             break;
                         case MessageBoxResult.No:
@@ -100,24 +100,28 @@ namespace AlturaImageChanger
 
         }
 
-        private async Task TaskChangeImages(List<SimpleItem> items, string apiKey, int imageIndex, string collection)
+        private async Task TaskChangeProperties(List<SimpleItem> items, string apiKey,string propertyName, string propertyValue , string collection)
         {
             foreach (SimpleItem item in items)
             {
-                Log($"Updating Item: {item.name} to image index {imageIndex}");
+                Log($"Updating Item: {item.name} - {propertyName} : {propertyValue}");
                await Task.Delay(10);
-                if (!UpdateImage(apiKey, item.tokenId, collection, imageIndex))
+                
+                if (!(await UpdateStatAsync(apiKey, item.tokenId, collection,propertyName, propertyValue)))
                 {
                     Log($"Received an error updating {item.name} at index {item.tokenId} cancelling batch");
                 }
             }
         }
 
-        private bool UpdateImage(string apiKey, int tokenId, string collection, int imageIndex)
+        private async Task<bool> UpdateStatAsync(string apiKey, int index, string collection, string propertyName, string propertyValue)
         {
+
             try
             {
-                var url = "https://app.alturanft.com/api/external/item/image?apiKey="+apiKey;
+
+                var url = "https://app.alturanft.com/api/external/item/property?apiKey=" + apiKey;
+
 
                 var httpRequest = (HttpWebRequest)WebRequest.Create(url);
                 httpRequest.Method = "POST";
@@ -125,35 +129,40 @@ namespace AlturaImageChanger
                 httpRequest.ContentType = "application/json";
 
                 var data = @"{
-  ""tokenId"":" + tokenId + @",
+  ""tokenId"":" + index + @",
   ""collectionId"":""" + collection + @""",
-  ""imageIndex"": " + imageIndex + "}";
+  ""propertyName"": """ + propertyName + @""",
+  ""propertyValue"": """ + propertyValue + @"""
+}";
 
 
-                using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
+                //   Console.WriteLine(data);
+
+                using (var streamWriter = new StreamWriter(await httpRequest.GetRequestStreamAsync()))
                 {
                     streamWriter.Write(data);
                 }
 
-                var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+                var httpResponse = (HttpWebResponse)await httpRequest.GetResponseAsync();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
-                    //  Console.WriteLine(result);
                 }
 
                 Console.WriteLine(httpResponse.StatusCode);
+
                 return true;
+
 
             }
             catch (Exception e)
             {
-                Console.WriteLine("Http Error:" + e.Message);
-                // Console.WriteLine(e.Data);
+                Console.WriteLine("http error");
+                Console.WriteLine(e.Message);
                 return false;
             }
-
         }
+
 
         private async Task<List<SimpleItem>> GetItems(string collection, string tokenId = "")
         {
@@ -195,9 +204,9 @@ namespace AlturaImageChanger
             }
 
 
-            if (int.Parse(txt_imageIndex.Text) < 1)
+            if (txt_PropertyName.Text == "")
             {
-                Log("Invalid Image Index - Should be a number greater than 0");
+                Log("No property Value Provided");
                 return false;
             }
 
@@ -260,7 +269,7 @@ namespace AlturaImageChanger
 
         private void btn_ChangeImage(object sender, RoutedEventArgs e)
         {
-            TriggerChangeItem();
+            TriggerChangeProperties();
         }
     }
 }

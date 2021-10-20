@@ -1,12 +1,11 @@
-﻿<Window x:Class="AlturaImageChanger.MainWindow"
+﻿<Window x:Class="AlturaPropertyChanger.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
-        xmlns:local="clr-namespace:AlturaImageChanger"
+        xmlns:local="clr-namespace:AlturaPropertyChanger"
         mc:Ignorable="d"
-        Title="Altura Image Changer" Height="514" Width="539"
-        >
+        Title="Altura Property Changer" Height="514" Width="539">
     <Grid>
         <Label Content="Item Details" HorizontalAlignment="Left" Height="34" Margin="10,10,0,0" VerticalAlignment="Top" Width="145" FontSize="18"/>
         <ScrollViewer x:Name="LogScrollViewer" Margin="11,249,11,10">
@@ -37,8 +36,31 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <TextBox x:Name="txt_itemToken" Text="1" TextAlignment="Right" HorizontalAlignment="Left" Margin="189,150,0,0" VerticalAlignment="Top" Width="72" ToolTip="Used if you only want to check holders of a specific item within a collection" PreviewTextInput="NumberValidationTextBox"/>
-        <TextBox x:Name="txt_imageIndex" HorizontalAlignment="Left" Margin="330,149,0,0" TextAlignment="Right" Text="1" ToolTip="Token from Above collection to Airdrop" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox x:Name="txt_itemToken" Text="1" TextAlignment="Right" HorizontalAlignment="Left" Margin="66,154,0,0" VerticalAlignment="Top" Width="72" ToolTip="Used if you only want to check holders of a specific item within a collection" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox x:Name="txt_PropertyName" HorizontalAlignment="Left" Margin="229,154,0,0" TextAlignment="Right" ToolTip="Token from Above collection to Airdrop" TextWrapping="Wrap" VerticalAlignment="Top" Width="106">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Luck" Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
         <TextBox x:Name="txt_APIKey" Margin="330,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="185">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
@@ -64,13 +86,22 @@
             </TextBox.Style>
         </TextBox>
         <Label Content="Item Collection" HorizontalAlignment="Left" Margin="21,55,0,0" VerticalAlignment="Top"/>
-        <Label Content="Item Token" HorizontalAlignment="Left" Margin="146,125,0,0" VerticalAlignment="Top"/>
+        <Label Content="Item Token" HorizontalAlignment="Left" Margin="23,129,0,0" VerticalAlignment="Top"/>
         <Label Content="API Key" HorizontalAlignment="Left" Margin="310,55,0,0" VerticalAlignment="Top"/>
-        <Label Content="Image Index" HorizontalAlignment="Left" Margin="310,123,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chk_SpecificToken" Content="Specific Item" HorizontalAlignment="Left" Margin="23,151,0,0" VerticalAlignment="Top" Checked="chk_SpecificToken_Checked" Click="chk_SpecificToken_Checked"/>
+        <Label Content="Property Name" HorizontalAlignment="Left" Margin="212,128,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <CheckBox x:Name="chk_SpecificToken" Content="Specific Item" HorizontalAlignment="Left" Margin="39,105,0,0" VerticalAlignment="Top" Checked="chk_SpecificToken_Checked" Click="chk_SpecificToken_Checked"/>
         <Label Content="API Details" HorizontalContentAlignment="Right" Height="34" Margin="341,10,0,0" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Left" Width="174"/>
 
-        <Button x:Name="btn_AutoAirdrop" Content="Change Image" HorizontalAlignment="Center" Margin="0,199,0,0" VerticalAlignment="Top" Width="160" Height="25" Click="btn_ChangeImage"/>
+        <Button x:Name="btn_AutoAirdrop" Content="Change Property" HorizontalAlignment="Center" Margin="0,199,0,0" VerticalAlignment="Top" Width="160" Height="25" Click="btn_ChangeImage"/>
         <Button x:Name="btn_Twitter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="240,14,0,0" Height="26" ToolTip="The Shillverse Twitter" Click="Btn_Twitter1_Click">
             <StackPanel>
                 <Image Source="/twitter-128.png" />
@@ -91,5 +122,39 @@
                 <Image Source="/BSC.png" />
             </StackPanel>
         </Button>
+        <TextBox x:Name="txt_PropertValue" HorizontalAlignment="Left" Margin="407,152,0,0" TextAlignment="Right" ToolTip="Token from Above collection to Airdrop" TextWrapping="Wrap" VerticalAlignment="Top" Width="106">
+            <TextBox.Style>
+                <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Right" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="1" Foreground="LightGray" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Label Content="Property Value" HorizontalAlignment="Left" Margin="390,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
     </Grid>
 </Window>
