@@ -127,7 +127,7 @@ namespace AlturaImageChanger
                 var data = @"{
   ""tokenId"":" + tokenId + @",
   ""collectionId"":""" + collection + @""",
-  ""imageIndex"": " + imageIndex + "}";
+  ""imageIndex"": """ + imageIndex + @"""}";
 
 
                 using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
@@ -191,13 +191,6 @@ namespace AlturaImageChanger
             if (txt_APIKey.Text == "")
             {
                 Log("No API Key Provided..");
-                return false;
-            }
-
-
-            if (int.Parse(txt_imageIndex.Text) < 1)
-            {
-                Log("Invalid Image Index - Should be a number greater than 0");
                 return false;
             }
 
